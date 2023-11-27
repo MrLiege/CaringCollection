@@ -15,7 +15,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var flowLayout = UICollectionViewFlowLayout()
+        let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 40)
         flowLayout.itemSize = CGSize(width: 300, height: 500)
@@ -52,7 +52,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         cell.backgroundColor = .systemGray5
         cell.layer.cornerRadius = 10
         
@@ -60,16 +60,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        var itemWidth: CGFloat = 300
-        var spacing: CGFloat = 10
-        var leftInset: CGFloat = scrollView.contentInset.left
-        var itemWidthPlusSpacing = itemWidth + spacing
+        let itemWidth: CGFloat = 300
+        let spacing: CGFloat = 10
+        let leftInset: CGFloat = scrollView.contentInset.left
+        let itemWidthPlusSpacing = itemWidth + spacing
 
-        var targetX = targetContentOffset.pointee.x
-        var adjustedTargetX = targetX + leftInset + itemWidthPlusSpacing / 2
-        var currentElement = Int(adjustedTargetX / itemWidthPlusSpacing)
+        let targetX = targetContentOffset.pointee.x
+        let adjustedTargetX = targetX + leftInset + itemWidthPlusSpacing / 2
+        let currentElement = Int(adjustedTargetX / itemWidthPlusSpacing)
 
-        var updatedHorizontalOffset = CGFloat(currentElement) * itemWidthPlusSpacing - leftInset - 2.5
+        let updatedHorizontalOffset = CGFloat(currentElement) * itemWidthPlusSpacing - leftInset - 2.5
         targetContentOffset.pointee = CGPoint(x: updatedHorizontalOffset, y: 0)
     }
 
